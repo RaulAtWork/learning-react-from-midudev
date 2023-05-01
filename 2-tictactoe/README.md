@@ -10,6 +10,6 @@ Requirements:
 
 - ✅3x3 grid
 - ✅Selectable tiles
-- Reset button 
-- Turn marker
+- ✅Reset button
+- ✅Turn marker
 - Game output: p1 win, p2 win, draw

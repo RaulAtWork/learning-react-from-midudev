@@ -1,36 +1,69 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateTile } from "../app/storage";
+import { resetGrid, updateTile } from "../app/storage";
 
 const STATE = {
   none: "",
-  selected: "1",
+  cross: "1",
+  circle: "2",
 };
 
-function Tile({ state, index }) {
+function Tile({ state, index, newState, postMove }) {
   const dispatch = useDispatch();
-  function handleClick(event) {
+  function handleClick() {
     if (state === STATE.none) {
-      dispatch(updateTile({ index, state: STATE.selected }));
+      dispatch(updateTile({ index, state: newState }));
+      postMove();
     }
   }
 
   return (
     <button className="tile" onClick={handleClick}>
-      {state === STATE.selected && "X"}
+      <span className="tile-content">
+        {state === STATE.cross && "X"}
+        {state === STATE.circle && "O"}
+      </span>
     </button>
   );
 }
 
 function TicTacToe() {
   const tiles = useSelector((state) => state.grid);
+  const dispatch = useDispatch();
+  const [currentPlayer, setCurrentPlayer] = useState(STATE.cross);
+
+  function resetGame(event) {
+    dispatch(resetGrid());
+    setCurrentPlayer(STATE.cross);
+  }
+
+  function postMove() {
+    setCurrentPlayer(
+      currentPlayer === STATE.cross ? STATE.circle : STATE.cross
+    );
+  }
 
   return (
-    <div className="grid col-3">
-      {tiles &&
-        Object.values(tiles).map((tile) => (
-          <Tile key={tile.key} state={tile.state} index={tile.key} />
-        ))}
+    <div className="flex-center">
+      <button className="mb-1" onClick={resetGame}>
+        Reset game
+      </button>
+      <div className="grid col-3">
+        {tiles &&
+          Object.values(tiles).map((tile) => (
+            <Tile
+              key={tile.key}
+              state={tile.state}
+              index={tile.key}
+              newState={currentPlayer}
+              postMove={postMove}
+            />
+          ))}
+      </div>
+      <p>
+        {currentPlayer === STATE.cross && "X"}
+        {currentPlayer === STATE.circle && "O"}
+      </p>
     </div>
   );
 }

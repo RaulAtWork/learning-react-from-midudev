@@ -17,7 +17,9 @@ const gridSlice = createSlice({
   initialState: initialGrid,
   reducers: {
     resetGrid(state) {
-      state = initialGrid;
+      Object.keys(initialGrid).forEach((key) => {
+        state[key].state = initialGrid[key].state;
+      });
     },
     updateTile(state, action) {
       state[action.payload.index].state = action.payload.state;
