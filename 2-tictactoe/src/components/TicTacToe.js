@@ -1,23 +1,23 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { updateTile } from "../app/storage";
 
-function Tile({value}) {
-  const VALUE = {
-    none: 0,
-    selected: 1,
-  };
+const STATE = {
+  none: "",
+  selected: "1",
+};
 
+function Tile({ state, index }) {
+  const dispatch = useDispatch();
   function handleClick(event) {
-    if (value === VALUE.none) {
-      setValue(VALUE.selected);
-    } else {
-      setValue(VALUE.none);
+    if (state === STATE.none) {
+      dispatch(updateTile({ index, state: STATE.selected }));
     }
   }
 
   return (
     <button className="tile" onClick={handleClick}>
-      {value === VALUE.selected && "X"}
+      {state === STATE.selected && "X"}
     </button>
   );
 }
@@ -27,7 +27,10 @@ function TicTacToe() {
 
   return (
     <div className="grid col-3">
-      {tiles && Object.values(tiles).map((tile, index) => <Tile value={tile}/>)}
+      {tiles &&
+        Object.values(tiles).map((tile) => (
+          <Tile key={tile.key} state={tile.state} index={tile.key} />
+        ))}
     </div>
   );
 }
