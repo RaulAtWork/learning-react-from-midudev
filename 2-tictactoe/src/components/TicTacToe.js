@@ -68,7 +68,8 @@ function TicTacToe() {
             />
           ))}
       </div>
-      <p>
+      <h2>Current Player: </h2>
+      <p className="flex-center tile-content">
         {currentPlayer === STATE.cross && "X"}
         {currentPlayer === STATE.circle && "O"}
       </p>
