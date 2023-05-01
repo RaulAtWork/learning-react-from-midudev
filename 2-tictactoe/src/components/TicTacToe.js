@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { resetGrid, updateTile } from "../app/storage";
+import { gameOutcome } from "../app/logic";
 
 const STATE = {
   none: "",
@@ -10,9 +11,9 @@ const STATE = {
 
 function Tile({ state, index, newState, postMove }) {
   const dispatch = useDispatch();
-  function handleClick() {
+  async function handleClick() {
     if (state === STATE.none) {
-      dispatch(updateTile({ index, state: newState }));
+      await dispatch(updateTile({ index, state: newState }));
       postMove();
     }
   }
@@ -36,6 +37,13 @@ function TicTacToe() {
     dispatch(resetGrid());
     setCurrentPlayer(STATE.cross);
   }
+
+  useEffect(() => {
+    const outcome = gameOutcome(tiles);
+    if (outcome) {
+      alert(outcome + ". Reset game please");
+    }
+  }, [tiles]);
 
   function postMove() {
     setCurrentPlayer(
