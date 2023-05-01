@@ -8,7 +8,8 @@ Classic Tic Tac Toe game programmed on React
 
 Requirements:
 
-- 3x3 grid
-- Reset button
+- ✅3x3 grid
+- ✅Selectable tiles
+- Reset button 
 - Turn marker
 - Game output: p1 win, p2 win, draw

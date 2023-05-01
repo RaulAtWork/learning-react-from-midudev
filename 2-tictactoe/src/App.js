@@ -1,8 +1,16 @@
 import React from "react";
 import "./index.css";
+import TicTacToe from "./components/TicTacToe";
+import { Provider } from "react-redux";
+import store from "./app/storage";
 
 function App() {
-  return <h1>TIC TAC TOE</h1>;
+  return (
+    <Provider store={store}>
+      <h1>TIC TAC TOE</h1>
+      <TicTacToe />
+    </Provider>
+  );
 }
 
 export default App;

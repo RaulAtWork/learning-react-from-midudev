@@ -1,5 +1,29 @@
+:root{
+    --tile-size: 100px
+}
+
 body{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+h1{
+    text-align: center;
+}
+
+.tile{
+    height: var(--tile-size);
+    width: var(--tile-size);
+    border: 3px solid gray;
+    border-radius: 5px;
+}
+
+.grid{
+    display: grid;
+    gap: 4px;
+}
+
+.col-3{
+    grid-template-columns: 1fr 1fr 1fr;
 }
