@@ -33,7 +33,7 @@ function TicTacToe() {
   const dispatch = useDispatch();
   const [currentPlayer, setCurrentPlayer] = useState(STATE.cross);
 
-  function resetGame(event) {
+  function resetGame() {
     dispatch(resetGrid());
     setCurrentPlayer(STATE.cross);
   }
