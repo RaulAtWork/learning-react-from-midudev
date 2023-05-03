@@ -1,54 +1,34 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { resetGrid, updateTile } from "../app/storage";
+import React, { useState } from "react";
 import { gameOutcome } from "../app/logic";
-
-const STATE = {
-  none: "",
-  cross: "1",
-  circle: "2",
-};
-
-function Tile({ state, index, newState, postMove }) {
-  const dispatch = useDispatch();
-  async function handleClick() {
-    if (state === STATE.none) {
-      await dispatch(updateTile({ index, state: newState }));
-      postMove();
-    }
-  }
-
-  return (
-    <button className="tile" onClick={handleClick}>
-      <span className="tile-content">
-        {state === STATE.cross && "X"}
-        {state === STATE.circle && "O"}
-      </span>
-    </button>
-  );
-}
+import { STATE } from "../app/constants";
+import Tile from "./Tile";
+import { InitialStateBoard } from "../app/constants";
 
 function TicTacToe() {
-  const tiles = useSelector((state) => state.grid);
-  const dispatch = useDispatch();
+  const [tiles, setTiles] = useState(InitialStateBoard);
   const [currentPlayer, setCurrentPlayer] = useState(STATE.cross);
+  const [winner, setWinner] = useState(null);
 
   function resetGame() {
-    dispatch(resetGrid());
+    setTiles(InitialStateBoard);
     setCurrentPlayer(STATE.cross);
+    setWinner(null);
   }
 
-  useEffect(() => {
-    const outcome = gameOutcome(tiles);
-    if (outcome) {
-      alert(outcome + ". Reset game please");
-    }
-  }, [tiles]);
+  function updateBoard(index) {
+    //if winner prevent board interaction
+    if (winner) return;
 
-  function postMove() {
+    const newTiles = [...tiles];
+    newTiles[index] = currentPlayer;
+    setTiles(newTiles);
     setCurrentPlayer(
       currentPlayer === STATE.cross ? STATE.circle : STATE.cross
     );
+    const endGame = gameOutcome(newTiles);
+    if (endGame) {
+      setWinner(endGame);
+    }
   }
 
   return (
@@ -58,16 +38,13 @@ function TicTacToe() {
       </button>
       <div className="grid col-3">
         {tiles &&
-          Object.values(tiles).map((tile) => (
-            <Tile
-              key={tile.key}
-              state={tile.state}
-              index={tile.key}
-              newState={currentPlayer}
-              postMove={postMove}
-            />
+          tiles.map((tile, index) => (
+            <Tile key={index} index={index} updateBoard={updateBoard}>
+              {tile}
+            </Tile>
           ))}
       </div>
+      {winner && <p>{`Winner chicken dinner ${winner}`}</p>}
       <h2>Current Player: </h2>
       <p className="flex-center tile-content">
         {currentPlayer === STATE.cross && "X"}
