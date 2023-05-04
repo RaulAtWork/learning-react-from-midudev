@@ -1,5 +1,4 @@
 import React from "react";
-import { STATE } from "../app/constants";
 
 function Tile({ children, index, updateBoard }) {
   function handleClick() {

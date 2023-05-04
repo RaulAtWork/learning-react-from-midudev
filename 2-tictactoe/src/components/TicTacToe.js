@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { gameOutcome } from "../app/logic";
+import { gameOutcome, getWinnerMessage } from "../app/logic";
 import { STATE } from "../app/constants";
 import Tile from "./Tile";
 import { InitialStateBoard } from "../app/constants";
+import ModalWindow from "./ModalWindow";
+import confetti from "canvas-confetti";
 
 function TicTacToe() {
   const [tiles, setTiles] = useState(InitialStateBoard);
@@ -19,15 +21,21 @@ function TicTacToe() {
     //if winner prevent board interaction
     if (winner) return;
 
+    //calculate new board
     const newTiles = [...tiles];
     newTiles[index] = currentPlayer;
     setTiles(newTiles);
+
+    //change turn
     setCurrentPlayer(
       currentPlayer === STATE.cross ? STATE.circle : STATE.cross
     );
+
+    //check if winner
     const endGame = gameOutcome(newTiles);
     if (endGame) {
       setWinner(endGame);
+      confetti();
     }
   }
 
@@ -44,12 +52,14 @@ function TicTacToe() {
             </Tile>
           ))}
       </div>
-      {winner && <p>{`Winner chicken dinner ${winner}`}</p>}
+      {winner && (
+        <ModalWindow>
+          <p className="mb-1">{getWinnerMessage(winner)}</p>
+          <button onClick={resetGame}>Reset game</button>
+        </ModalWindow>
+      )}
       <h2>Current Player: </h2>
-      <p className="flex-center tile-content">
-        {currentPlayer === STATE.cross && "X"}
-        {currentPlayer === STATE.circle && "O"}
-      </p>
+      <p className="flex-center tile-content">{currentPlayer}</p>
     </div>
   );
 }

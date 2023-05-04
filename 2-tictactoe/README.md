@@ -25,9 +25,7 @@ Classic Tic Tac Toe game programmed on React
 - ✅ Consolidate the updateBoard after each turn, do not use a useEffect!
 - ✅ Winner can be inside an state
 - ✅ Winner logic: Winner combos, iterate over winner combos determinate winner
-- Use modal window for win condition
+- ✅ Use modal window for win condition
 - ✅ If we have a winner prevent board interaction
 - ✅ Make sure when winning that the board status is up to date (hint: useState is asynchronous and do not returns a promise)
-- Use local storage to save the game
-- Confetti when winner
-- Comment code
+- ✅ Confetti when winner
