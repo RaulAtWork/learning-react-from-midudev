@@ -7,4 +7,4 @@
 ## Requirements
 
 - ✅ A button that activates the tracker
-- A circular shadow that follows the mouse
+- ✅ A circular shadow that follows the mouse
