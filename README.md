@@ -6,8 +6,10 @@ This is a learning react repository to practice and provide a solution to [Midud
 
 ## Changelog
 
+- 1.2
+  - Added 05-film searcher
 - 1.1
-  - Added 3-mouse-follower project
+  - Added 03-mouse-follower project
   - Changed project's naming
 - 1.0
-  - Added 2-tictactoe project
+  - Added 02-tictactoe project
