@@ -8,12 +8,12 @@ API https://www.omdbapi.com/ get your won API key sign up with your email
 
 ## Requirements
 
-- Show input to search a film
-- Search button
-- List of films that shoes title, year and cover image
-- Searcher works
-- Film grid responsive
+- ✅ Show input to search a film
+- ✅ Search button
+- ✅ List of films that shows title, year and poster
+- ✅ Film grid responsive
 - Fetch API live data
+- Searcher works
 
 ## Extra
 
