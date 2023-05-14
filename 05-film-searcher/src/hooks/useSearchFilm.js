@@ -15,7 +15,10 @@ export function useSearchFilm(searchTerm) {
   //create a method to be able to fetch data from the API
   const updateSearch = useCallback(async (searchTerm) => {
     if (searchTerm === prevSearch.current) return;
-    if (!searchTerm) return;
+    if (!searchTerm) {
+      setFilmlist();
+      return;
+    }
     async function dataFetch() {
       const response = await fetch(getSearchEndPoint(searchTerm));
       const data = await response.json();
