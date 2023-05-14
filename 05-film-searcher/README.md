@@ -12,11 +12,11 @@ API https://www.omdbapi.com/ get your won API key sign up with your email
 - ✅ Search button
 - ✅ List of films that shows title, year and poster
 - ✅ Film grid responsive
-- Fetch API live data
-- Searcher works
+- ✅ Fetch API live data
+- ✅ Searcher works
 
 ## Extra
 
-- Avoid doing the same search twice in a row
-- Make the search automatically while the user writes
-- Avoid continous search while writtin (debounce 500ms)
+- ✅ Avoid doing the same search twice in a row
+- ✅ Make the search automatically while the user writes
+- ✅ Avoid continous search while writtin (debounce 500ms)
