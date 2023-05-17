@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles/index.css";
 import Product from "./components/Product";
+import { getMockUpProductList } from "./services/Products";
 
 function App() {
   return (
@@ -14,35 +15,21 @@ function App() {
 }
 
 function Products() {
+  const productList = getMockUpProductList();
   return (
     <>
       <h2>Product List</h2>
 
       <div className="grid-resposive">
-        <Product
-          category="Category"
-          price="152$"
-          title="this is a title"
-          image="https://placehold.co/400"
-        />
-        <Product
-          category="Category"
-          price="152$"
-          title="this is a title"
-          image="https://placehold.co/400"
-        />
-        <Product
-          category="Category"
-          price="152$"
-          title="this is a title"
-          image="https://placehold.co/400"
-        />
-        <Product
-          category="Category"
-          price="152$"
-          title="this is a title"
-          image="https://placehold.co/400"
-        />
+        {productList.map((item) => (
+          <Product
+            category={item.category}
+            price={item.price}
+            title={item.title}
+            image={item.image}
+            key={item.key}
+          />
+        ))}
       </div>
     </>
   );
