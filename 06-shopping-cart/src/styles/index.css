@@ -1,0 +1,19 @@
+@import "./reset.css";
+@import "./water.css";
+
+#root{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid-resposive{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+main{
+    width: 100%;
+    max-width: 100%;
+}
