@@ -12,8 +12,8 @@ We can use https://dummyjson.com/docs/products to retrieve a list of products
 
 - ✅ Show a list of products: Image, title, price, category
 - ✅ Show the actual list of real products
-- Filter by category
-- Filter by price
+- ✅ Filter by category
+- ✅ Filter by price range
 
 ---
 

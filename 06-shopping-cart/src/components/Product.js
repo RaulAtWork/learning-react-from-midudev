@@ -6,7 +6,7 @@ function Product({ image, title, price, category }) {
       <h3>{title}</h3>
       <img src={image} />
       <p>
-        {price} - {category}
+        {price}€ - {category}
       </p>
     </article>
   );

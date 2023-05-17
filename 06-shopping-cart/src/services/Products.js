@@ -4,7 +4,7 @@ function mapProductList(products) {
   const productList = [...products.products].map((item) => {
     return {
       title: item.title,
-      price: item.price + "€",
+      price: item.price,
       category: item.category,
       image: item.thumbnail,
       key: item.id,
@@ -18,4 +18,14 @@ function getMockUpProductList() {
   return mapProductList(mockProducts);
 }
 
-export { getMockUpProductList };
+/**
+ * Expects to be the products already mapped
+ * @param {array} products
+ */
+function getCategoryList(products) {
+  const categories = new Set();
+  products.forEach(({ category }) => categories.add(category));
+  return Array.from(categories);
+}
+
+export { getMockUpProductList, getCategoryList };

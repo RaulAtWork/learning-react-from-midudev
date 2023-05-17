@@ -13,7 +13,7 @@ h3{
 
 .grid-resposive{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
 }
 
@@ -40,4 +40,17 @@ main{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.filters-container{
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+    gap: 50px
+}
+
+.filters-container span{
+    margin-bottom: 5px;
+    display: block;
 }
