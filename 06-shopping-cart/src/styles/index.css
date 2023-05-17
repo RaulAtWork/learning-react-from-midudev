@@ -7,6 +7,10 @@
     align-items: center;
 }
 
+h3{
+    margin-top: 5px;
+}
+
 .grid-resposive{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -16,4 +20,24 @@
 main{
     width: 100%;
     max-width: 100%;
+}
+
+.product-item{
+    border: 1px black solid;
+    height: auto;
+    padding-bottom: 5px;
+    background-color: #202020;
+}
+
+.product-item img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-item h3, .product-item p{
+    padding-left: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
