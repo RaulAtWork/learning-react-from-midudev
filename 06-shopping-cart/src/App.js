@@ -1,12 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./styles/index.css";
 import Product from "./components/Product";
 import useProductsFilter from "./hooks/useProductsFilter";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  action_products_updateFilters,
+  select_products_filtered,
+  select_products_filters,
+} from "./redux/store";
 
 function App() {
-  const [productList, updateFilters, categories] = useProductsFilter({
+  const [, updateFilters, categories] = useProductsFilter({
     category: "",
   });
+
+  const productList = useSelector(select_products_filtered);
 
   return (
     <>
@@ -19,19 +27,27 @@ function App() {
   );
 }
 
-function Filters({ categories, updateFilters }) {
-  const [filters, setFilters] = useState({ category: "", priceRange: 1000 });
-
-  useEffect(() => {
-    updateFilters(filters);
-  }, [filters]);
+function Filters({ categories }) {
+  const dispatch = useDispatch();
+  const filters = useSelector(select_products_filters);
+  console.log("filters", filters);
 
   function handleCategoryChange(event) {
-    setFilters((prev) => ({ ...prev, category: event.target.value }));
+    dispatch(
+      action_products_updateFilters({
+        ...filters,
+        category: event.target.value,
+      })
+    );
   }
 
   function handlePriceRangeChange(event) {
-    setFilters((prev) => ({ ...prev, priceRange: event.target.value }));
+    dispatch(
+      action_products_updateFilters({
+        ...filters,
+        priceRange: Number(event.target.value),
+      })
+    );
   }
 
   return (

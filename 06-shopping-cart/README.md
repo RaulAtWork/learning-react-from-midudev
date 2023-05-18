@@ -30,3 +30,4 @@ We can use https://dummyjson.com/docs/products to retrieve a list of products
 ## Additionals
 
 - Save the cart on localStorage to retrieve if the window closes
+- Use redux to handle the product list and the cart

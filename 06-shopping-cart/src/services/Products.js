@@ -28,4 +28,13 @@ function getCategoryList(products) {
   return Array.from(categories);
 }
 
-export { getMockUpProductList, getCategoryList };
+function applyfitlersToProductList(productList, { category, priceRange }) {
+  let newList = [...productList];
+  //filter by category
+  newList = newList.filter((item) => item.category === category || !category);
+  //filter by price range
+  newList = newList.filter((item) => item.price < priceRange);
+  return newList;
+}
+
+export { getMockUpProductList, getCategoryList, applyfitlersToProductList };
