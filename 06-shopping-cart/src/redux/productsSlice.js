@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   applyfitlersToProductList,
+  getCategoryList,
   getMockUpProductList,
 } from "../services/Products";
 
@@ -9,6 +10,7 @@ const productsSlice = createSlice({
   initialState: {
     productList: getMockUpProductList(),
     filters: { priceRange: 1000, category: "" },
+    categories: getCategoryList(getMockUpProductList()),
   },
   reducers: {
     updateFilters: (state, action) => {
@@ -25,7 +27,9 @@ const selectFilters = (state) => {
   return state.products.filters;
 };
 
-export { selectAll, selectByFilters, selectFilters };
+const selectCategories = (state) => state.products.categories;
+
+export { selectAll, selectByFilters, selectFilters, selectCategories };
 
 export const { updateFilters } = productsSlice.actions;
 

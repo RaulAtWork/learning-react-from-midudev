@@ -5,32 +5,43 @@ import useProductsFilter from "./hooks/useProductsFilter";
 import { useDispatch, useSelector } from "react-redux";
 import {
   action_products_updateFilters,
+  select_products_categories,
   select_products_filtered,
   select_products_filters,
 } from "./redux/store";
 
 function App() {
-  const [, updateFilters, categories] = useProductsFilter({
-    category: "",
-  });
-
-  const productList = useSelector(select_products_filtered);
-
   return (
-    <>
-      <h1>Wellcome to the shop</h1>
-      <Filters categories={categories} updateFilters={updateFilters} />
-      <main>
-        <Products productList={productList} />
-      </main>
-    </>
+    <div className="main-container">
+      <div className="main-content">
+        <h1>Wellcome to the shop</h1>
+        <Filters />
+        <main>
+          <Products />
+        </main>
+      </div>
+      <div className="sidebar-right">
+        <Cart />
+      </div>
+    </div>
   );
 }
 
-function Filters({ categories }) {
+function Cart() {
+  return (
+    <div className="cart">
+      <div className="main-cart">
+        <h2>This is the cart 🛒</h2>
+      </div>
+      <p className="bottom-position">Total amount: XXX €</p>
+    </div>
+  );
+}
+
+function Filters() {
   const dispatch = useDispatch();
   const filters = useSelector(select_products_filters);
-  console.log("filters", filters);
+  const categories = useSelector(select_products_categories);
 
   function handleCategoryChange(event) {
     dispatch(
@@ -86,7 +97,9 @@ function Filters({ categories }) {
   );
 }
 
-function Products({ productList }) {
+function Products() {
+  const productList = useSelector(select_products_filtered);
+
   return (
     <>
       <h2>Product List</h2>

@@ -23,6 +23,7 @@ function getMockUpProductList() {
  * @param {array} products
  */
 function getCategoryList(products) {
+  if (!products) return [];
   const categories = new Set();
   products.forEach(({ category }) => categories.add(category));
   return Array.from(categories);

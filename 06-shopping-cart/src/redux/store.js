@@ -17,4 +17,5 @@ export {
   selectByFilters as select_products_filtered,
   updateFilters as action_products_updateFilters,
   selectFilters as select_products_filters,
+  selectCategories as select_products_categories,
 } from "./productsSlice";
