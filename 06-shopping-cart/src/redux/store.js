@@ -1,8 +1,10 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import productReducer from "./productsSlice";
+import cartReducer from "./cartSlice";
 
 const rootReducer = combineReducers({
   products: productReducer,
+  cart: cartReducer,
 });
 
 const store = configureStore({
@@ -11,7 +13,7 @@ const store = configureStore({
 
 export default store;
 
-// Selectors
+// Selectors & actions
 export {
   selectAll as select_products_all,
   selectByFilters as select_products_filtered,
@@ -19,3 +21,8 @@ export {
   selectFilters as select_products_filters,
   selectCategories as select_products_categories,
 } from "./productsSlice";
+
+export {
+  addToCart as action_cart_add,
+  selectAll as select_cart_all,
+} from "./cartSlice";

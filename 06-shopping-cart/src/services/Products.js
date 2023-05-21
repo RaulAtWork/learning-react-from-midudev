@@ -7,7 +7,8 @@ function mapProductList(products) {
       price: item.price,
       category: item.category,
       image: item.thumbnail,
-      key: item.id,
+      key: "product-" + item.id,
+      id: item.id,
     };
   });
 

@@ -102,4 +102,7 @@ main{
 
 .main-cart{
     padding: 0px 15px;
+    overflow-y: auto;
+    max-height: calc(100vh - 60px)
+
 }

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import "./styles/index.css";
 import Product from "./components/Product";
-import useProductsFilter from "./hooks/useProductsFilter";
 import { useDispatch, useSelector } from "react-redux";
+import Cart from "./components/Cart";
 import {
   action_products_updateFilters,
   select_products_categories,
@@ -23,17 +23,6 @@ function App() {
       <div className="sidebar-right">
         <Cart />
       </div>
-    </div>
-  );
-}
-
-function Cart() {
-  return (
-    <div className="cart">
-      <div className="main-cart">
-        <h2>This is the cart 🛒</h2>
-      </div>
-      <p className="bottom-position">Total amount: XXX €</p>
     </div>
   );
 }
@@ -114,6 +103,7 @@ function Products() {
             title={item.title}
             image={item.image}
             key={item.key}
+            id={item.id}
           />
         ))}
       </div>

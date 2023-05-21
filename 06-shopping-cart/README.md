@@ -19,8 +19,8 @@ We can use https://dummyjson.com/docs/products to retrieve a list of products
 
 ## Shop cart
 
-- Create a cart: products added to cart and total amount
-- Can add products to cart
+- ✅ Create a cart: products added to cart and total amount
+- ✅ Can add products to cart
 - Can delete products from cart
 - Can modify product cuantity from cart: plus and minus
 - Sync cart changes to product list
@@ -31,3 +31,4 @@ We can use https://dummyjson.com/docs/products to retrieve a list of products
 
 - Save the cart on localStorage to retrieve if the window closes
 - Use redux to handle the product list and the cart
+- Use the same component for Product list item and cart list item. It should not contain any logic
