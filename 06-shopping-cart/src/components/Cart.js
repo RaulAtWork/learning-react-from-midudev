@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { select_cart_all } from "../redux/store";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  action_cart_decementQuant,
+  action_cart_incrementQuant,
+  action_cart_remove,
+  select_cart_all,
+} from "../redux/store";
 
 function Cart() {
   const cartList = useSelector(select_cart_all);
@@ -36,6 +41,18 @@ function Cart() {
 }
 
 function CartItem({ id, quantity, title, price }) {
+  const dispatch = useDispatch();
+  function handleRemove() {
+    dispatch(action_cart_remove({ id: id }));
+  }
+  function handleIncrement() {
+    dispatch(action_cart_incrementQuant({ id: id }));
+  }
+
+  function handleDecrement() {
+    dispatch(action_cart_decementQuant({ id: id }));
+  }
+
   return (
     <div className="product-item">
       <h3>
@@ -44,6 +61,9 @@ function CartItem({ id, quantity, title, price }) {
       <p>
         {quantity} x {price}€
       </p>
+      <button onClick={handleRemove}>Remove</button>
+      <button onClick={handleDecrement}>-</button>
+      <button onClick={handleIncrement}>+</button>
     </div>
   );
 }

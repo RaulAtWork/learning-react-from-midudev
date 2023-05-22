@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Cart from "./components/Cart";
 import {
   action_products_updateFilters,
+  select_cart_all,
   select_products_categories,
   select_products_filtered,
   select_products_filters,
@@ -88,6 +89,7 @@ function Filters() {
 
 function Products() {
   const productList = useSelector(select_products_filtered);
+  const cartList = useSelector(select_cart_all);
 
   return (
     <>
@@ -104,6 +106,7 @@ function Products() {
             image={item.image}
             key={item.key}
             id={item.id}
+            onCart={cartList.some((elem) => elem.id === item.id)}
           />
         ))}
       </div>

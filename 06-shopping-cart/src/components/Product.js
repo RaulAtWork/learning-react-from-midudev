@@ -1,12 +1,16 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { action_cart_add } from "../redux/store";
+import { action_cart_add, action_cart_remove } from "../redux/store";
 
-function Product({ id, image, title, price, category }) {
+function Product({ id, image, title, price, category, onCart }) {
   const dispatch = useDispatch();
 
   function handleClick() {
-    dispatch(action_cart_add({ id }));
+    if (onCart) {
+      dispatch(action_cart_remove({ id }));
+    } else {
+      dispatch(action_cart_add({ id }));
+    }
   }
 
   return (
@@ -18,7 +22,9 @@ function Product({ id, image, title, price, category }) {
       <p>
         {price}€ - {category}
       </p>
-      <button onClick={handleClick}>Add to Cart</button>
+      <button onClick={handleClick}>
+        {onCart ? "Remove from cart" : "Add to Cart"}
+      </button>
     </article>
   );
 }

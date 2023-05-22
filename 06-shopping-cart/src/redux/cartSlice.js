@@ -13,10 +13,22 @@ const cartslice = createSlice({
   name: "cart",
   reducers: {
     addToCart: (state, action) => {
-      console.log(action.payload);
       if (!state.cart.some((item) => item.id === action.payload.id)) {
         state.cart.push({ id: action.payload.id, quantity: 1 });
       }
+    },
+    removeFromCart: (state, action) => {
+      state.cart = state.cart.filter((item) => item.id !== action.payload.id);
+    },
+    incrementQuantity: (state, action) => {
+      state.cart[
+        state.cart.findIndex((item) => item.id === action.payload.id)
+      ].quantity += 1;
+    },
+    decrementQuantity: (state, action) => {
+      state.cart[
+        state.cart.findIndex((item) => item.id === action.payload.id)
+      ].quantity -= 1;
     },
   },
 });
@@ -32,4 +44,9 @@ export const selectAll = (state) => {
 };
 
 export default cartslice.reducer;
-export const { addToCart } = cartslice.actions;
+export const {
+  addToCart,
+  removeFromCart,
+  incrementQuantity,
+  decrementQuantity,
+} = cartslice.actions;

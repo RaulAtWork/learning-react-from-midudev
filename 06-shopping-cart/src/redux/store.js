@@ -25,4 +25,7 @@ export {
 export {
   addToCart as action_cart_add,
   selectAll as select_cart_all,
+  removeFromCart as action_cart_remove,
+  incrementQuantity as action_cart_incrementQuant,
+  decrementQuantity as action_cart_decementQuant,
 } from "./cartSlice";
