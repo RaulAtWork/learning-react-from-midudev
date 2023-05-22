@@ -15,14 +15,16 @@ function Product({ id, image, title, price, category, onCart }) {
 
   return (
     <article className="product-item">
-      <h3>
-        {title} ({id})
-      </h3>
+      <h3>{title}</h3>
+      <p className="tag-darkgreen">{category}</p>
       <img src={image} />
       <p>
         {price}€ - {category}
       </p>
-      <button onClick={handleClick}>
+      <button
+        onClick={handleClick}
+        className={onCart ? "button-red" : "button-blue"}
+      >
         {onCart ? "Remove from cart" : "Add to Cart"}
       </button>
     </article>

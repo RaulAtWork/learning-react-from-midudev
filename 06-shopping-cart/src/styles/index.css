@@ -42,7 +42,7 @@ main{
 }
 
 .product-item h3, .product-item p{
-    padding-left: 10px;
+    margin-left: 10px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -105,4 +105,18 @@ main{
     overflow-y: auto;
     max-height: calc(100vh - 60px)
 
+}
+
+.button-red{
+    background-color: rgb(85, 2, 2);
+}
+.button-blue{
+    background-color: rgb(3, 3, 107)
+}
+.tag-darkgreen{
+    background-color: darkgreen;
+    border-radius: 4px;
+    display: inline-block;
+    padding: 2px 5px;
+    font-size: 0.75rem;
 }

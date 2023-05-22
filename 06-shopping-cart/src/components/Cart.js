@@ -31,6 +31,7 @@ function Cart() {
               price={item.price}
               key={item.id}
               id={item.id}
+              category={item.category}
               quantity={item.quantity}
             />
           ))}
@@ -40,7 +41,7 @@ function Cart() {
   );
 }
 
-function CartItem({ id, quantity, title, price }) {
+function CartItem({ id, quantity, title, price, category }) {
   const dispatch = useDispatch();
   function handleRemove() {
     dispatch(action_cart_remove({ id: id }));
@@ -55,15 +56,28 @@ function CartItem({ id, quantity, title, price }) {
 
   return (
     <div className="product-item">
-      <h3>
-        {title} ({id})
-      </h3>
+      <h3>{title}</h3>
+      <p className="tag-darkgreen">{category}</p>
       <p>
         {quantity} x {price}€
       </p>
-      <button onClick={handleRemove}>Remove</button>
-      <button onClick={handleDecrement}>-</button>
-      <button onClick={handleIncrement}>+</button>
+      <button className="button-red" onClick={handleRemove}>
+        Remove
+      </button>
+      <button
+        className="button-blue"
+        onClick={handleDecrement}
+        disabled={quantity < 2}
+      >
+        -
+      </button>
+      <button
+        className="button-blue"
+        onClick={handleIncrement}
+        disabled={quantity > 9}
+      >
+        +
+      </button>
     </div>
   );
 }
