@@ -31,3 +31,10 @@ We can use https://dummyjson.com/docs/products to retrieve a list of products
 
 - Save the cart on localStorage to retrieve if the window closes
 - ✅ Use redux to handle the product list and the cart
+
+---
+
+## Refactor & Optimization
+
+- Filter by both filters on the same line, do not filter on two different filters
+-
