@@ -37,4 +37,5 @@ We can use https://dummyjson.com/docs/products to retrieve a list of products
 ## Refactor & Optimization
 
 - Filter by both filters on the same line, do not filter on two different filters
--
+- Presentational components does not include any logic
+- Clean up components from any additional logic (use module to encapsulate logic)
